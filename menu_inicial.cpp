@@ -6,7 +6,11 @@ const int NUM_ALUMNOS = 20; // Número máximo de alumnos
 
 // Estructura para almacenar los datos personales de los alumnos
 struct Alumno {
-
+  string nombre;
+    string grupo;
+    string carrera;
+    float calificaciones[8]; // CalificaciÛn global para cada una de las 8 materias
+    bool activo = false; // Bandera para verificar si el alumno est· registrado
 };
 
 // Estructura para almacenar los nombres de las materias
@@ -26,7 +30,29 @@ void mostrarMenu() {
 
 // Función para dar de alta a un alumno 
 void altaAlumno(Alumno alumnos[], int &numAlumnos, Materias &materias) {
+if (numAlumnos >= NUM_ALUMNOS) {
+        cout << "Ya se alcanz\xA2 el m\xA0ximo de alumnos." << endl;
+        return;
+    }
+    cout << "\n--- Dar de alta a un alumno ---" << endl;
+    cout << "Nombre: ";
+    cin.ignore(); // Limpiar el buffer antes de usar getline
+    getline(cin, alumnos[numAlumnos].nombre); // Captura el nombre del alumno
+    cout << "Grupo: ";
+    getline(cin, alumnos[numAlumnos].grupo);  // Captura el grupo del alumno
+    cout << "Carrera: ";
+    getline(cin, alumnos[numAlumnos].carrera); // Captura la carrera del alumno
 
+    // Captura de las calificaciones globales para cada materia
+    for (int j = 0; j < 8; j++) {
+        cout << "Calificaci\xA2n global para la materia " << materias.nombreMaterias[j] << ": ";
+        cin >> alumnos[numAlumnos].calificaciones[j];
+    }
+    cin.ignore(); // Limpiar el buffer despuÈs de la entrada numÈrica
+
+    alumnos[numAlumnos].activo = true; // Activar el registro del alumno
+    numAlumnos++;
+    cout << "Alumno registrado con \x82xito." << endl;
 }
 
 // Función para consultar los datos de un alumno
