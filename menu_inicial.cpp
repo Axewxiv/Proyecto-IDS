@@ -6,11 +6,12 @@ const int NUM_ALUMNOS = 20; // N�mero m�ximo de alumnos
 
 // Estructura para almacenar los datos personales de los alumnos
 struct Alumno {
+
     string nombre;
     string grupo;
     string carrera;
-    float calificaciones[8]; // Calificaci�n global para cada una de las 8 materias
-    bool activo = false; // Bandera para verificar si el alumno est� registrado
+    float calificaciones[8]; // Calificacion global para cada una de las 8 materias
+    bool activo = false; // Bandera para verificar si el alumno esta registrado
 };
 
 // Estructura para almacenar los nombres de las materias
@@ -30,10 +31,12 @@ void mostrarMenu() {
 
 // Funci�n para dar de alta a un alumno (incluyendo calificaciones)
 void altaAlumno(Alumno alumnos[], int &numAlumnos, Materias &materias) {
+
     if (numAlumnos >= NUM_ALUMNOS) {
         cout << "Ya se alcanz\xA2 el m\xA0ximo de alumnos." << endl;
         return;
     }
+
 
     cout << "\n--- Dar de alta a un alumno ---" << endl;
     cout << "Nombre: ";
@@ -49,7 +52,9 @@ void altaAlumno(Alumno alumnos[], int &numAlumnos, Materias &materias) {
         cout << "Calificaci\xA2n global para la materia " << materias.nombreMaterias[j] << ": ";
         cin >> alumnos[numAlumnos].calificaciones[j];
     }
+
     cin.ignore(); // Limpiar el buffer despu�s de la entrada num�rica
+
 
     alumnos[numAlumnos].activo = true; // Activar el registro del alumno
     numAlumnos++;
